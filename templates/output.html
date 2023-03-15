@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          font-family: sans-serif;
+        }
+        .chartMenu {
+          width: 100vw;
+          height: 40px;
+          background: #1A1A1A;
+          color: rgba(54, 162, 235, 1);
+        }
+        .chartMenu p {
+          padding: 10px;
+          font-size: 20px;
+        }
+        .chartBox {
+          width: 700px;
+          padding: 20px;
+          border-radius: 20px;
+          border: solid 3px rgba(54, 162, 235, 1);
+          background: white;
+        }
+        table, th, td {
+          border: 1px solid black;
+           border-collapse: collapse;
+        }
+      </style>
+    <title>Home</title>
+    <script src="{{ url_for('static', filename = 'data.js') }}"></script>
+</head>
+<body>
+    </form>
+    <div>Output :</div>
+    <div class="chartMenu">
+        <p>โปรแกรมประยุกต์บนเว็บเพื่อการทำนายคุณสมบัติการต่อต้านจุลชีพของเปปไทด์สายสั้น</p>
+      </div>
+            <form method="POST">
+              <br>
+                <div style="margin-left: 10px;">Input : AAA,BBB </div><br>
+                <div style="margin-left: 10px;"><textarea id="text" name="text" style="width: 750px;height: 350px;"></textarea></div><br>
+                <input type="submit" value="submit" style="margin-left: 10px;"><br><br>
+                <div style="margin-left: 10px;">Output :</div><br>
+        <div class="chartBox" style="margin-left: 10px;">
+            <div style="text-align: center;">AMP <label id = "AMP"></label></div>
+          <canvas id="myChart"></canvas>
+        </div>
+        <div class="chartBox" style="margin-left: 10px;">
+            <div style="text-align: center;">NO <label id = "NO"></label> </div>
+        </div><br>
+              <input type="radio" id="AMP_button" name="button" value="AMP" onclick="uncheck()">
+              <label for="AMP_button">AMP</label><br>
+              <input type="radio" id="No_button" name="button" value="No" onclick="uncheck()">
+              <label for="No_button">No</label><br>
+              <input type="radio" id="other_button" name="button" value="other" onclick="check()">
+              <label for="other_button">AMB/AMF/AMV</label><br>
+              <input type="checkbox" id="AMB_button" name="AMB_button" value="AMB" disabled="disabled" onclick="other()">
+              <label for="AMB_button"> AMB</label><br>
+              <input type="checkbox" id="AMF_button" name="AMF_button" value="AMF" disabled="disabled" onclick="other()">
+              <label for="AMF_button"> AMF</label><br>
+              <input type="checkbox" id="AMV_button" name="AMV_button" value="AMV" disabled="disabled" onclick="other()">
+              <label for="AMV_button"> AMV</label><br><br>
+             <table id="table">
+                <tr>
+                  <th>No.</th>
+                  <th>Name</th>
+                  <th>AMP</th>
+                  <th>AMB</th>
+                  <th>AMV</th>
+                  <th>AMF</th>
+                  <th>Source</th>
+                </tr>
+              </table>
+    </form>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/chartjs-chart-venn@3.6.0/build/index.umd.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+      <script>
+      // setup 
+      const data = ChartVenn.extractSets(
+        data_venn,
+    {
+        label: ' ',
+
+    },
+      );
+  
+      // config 
+      const config = {
+        type: 'venn',
+        data,
+        options: {
+            borderColor: [
+          'rgba(255, 26, 104, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(0, 0, 0, 1)'
+        ],
+        backgroundColor: [
+          'rgba(255, 26, 104, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(0, 0, 0, 0.2)'
+        ]
+        }
+      };
+  
+      // render init block
+      const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+  
+      </script>
+      <script>
+        function tbdDataTable(data) {
+	//Loop and process
+	//data = data || [];
+	
+	var table = $("#table").DataTable({
+		destroy: true,
+		searching: false,
+		paging: false,
+		scrollY: '500px',
+        scrollCollapse: true,
+		bInfo: false,
+		sInfo: false,
+		bSort: false,
+		bProcessing: true,
+		autoWidth: false,
+		responsive: true,
+		data: data,
+		columns:[
+			{
+				title : "No.",
+				width : "10%",
+				defaultContent : "",
+				class : "lb-txt-center",
+				render : function(data, type, row, meta) {
+					return data;
+				},
+			},
+			{
+				title : "Name",
+				width : "25%",
+				data : "Name",
+				defaultContent : "",
+				class : "lb-txt-center",
+				render : function(data, type, row) {
+					return data;
+				},
+			},
+			{
+				title : "AMP",
+				width : "10%",
+				data : "AMP",
+				defaultContent : "0",
+				class : "lb-txt-center",
+				render : function(data, type, row) {
+					return data;
+				},
+			},
+			{
+				title : "AMB",
+				width : "10%",
+				data : "AMB",
+				defaultContent : "0",
+				class : "lb-txt-center",
+				render : function(data, type, row) {
+					return data;
+				},
+			},
+			{
+				title : "AMF",
+				width : "10%",
+				data : "AMF",
+				defaultContent : "0",
+				class : "lb-txt-center",
+				render : function(data, type, row) {
+					return data;
+				},
+			},
+			{
+				title : "AMV",
+				width : "10%",
+				data : "AMV",
+				defaultContent : "0",
+				class : "lb-txt-center",
+				render : function(data, type, row) {
+					return data;
+				},
+			},
+			{
+				title : "Source",
+				width : "25%",
+				data : "Source",
+				defaultContent : "",
+				class : "lb-txt-center",
+				render : function(data, type, row) {
+					return data;
+				},
+			}
+		],
+		"fnRowCallback": function (nRow, aData, iDisplayIndex) {
+		     var info = $(this).DataTable().page.info();
+		     $("td:nth-child(1)", nRow).html(info.start + iDisplayIndex + 1);
+		     return nRow;
+		 }
+	});
+}
+      </script>
+      <script>
+        function check(){
+            document.getElementById('AMB_button').disabled = false;
+            document.getElementById('AMF_button').disabled = false;
+            document.getElementById('AMV_button').disabled = false;
+    }
+        function uncheck(){
+            document.getElementById('AMB_button').disabled = true;
+            document.getElementById('AMF_button').disabled = true;
+            document.getElementById('AMV_button').disabled = true;
+            document.getElementById('AMB_button').checked = false;
+            document.getElementById('AMF_button').checked = false;
+            document.getElementById('AMV_button').checked = false;
+            if(document.getElementById('AMP_button').checked){
+              tbdDataTable(jsonObj_AMP);
+            }else if(document.getElementById('No_button').checked){
+              tbdDataTable(jsonObj_NO);
+            }
+    }
+        function other(){
+          if(document.getElementById('AMB_button').checked && document.getElementById('AMF_button').checked && document.getElementById('AMV_button').checked){
+              tbdDataTable(jsonObj_AMB_AMF_AMV);
+            }else if(document.getElementById('AMB_button').checked && document.getElementById('AMF_button').checked){
+              tbdDataTable(jsonObj_AMB_AMF);
+            }else if(document.getElementById('AMF_button').checked && document.getElementById('AMV_button').checked){
+              tbdDataTable(jsonObj_AMF_AMV);
+            }else if(document.getElementById('AMB_button').checked && document.getElementById('AMV_button').checked){
+              tbdDataTable(jsonObj_AMV_AMB);
+            }else if(document.getElementById('AMB_button').checked){
+              tbdDataTable(jsonObj_AMB);
+            }else if(document.getElementById('AMF_button').checked){
+              tbdDataTable(jsonObj_AMF);
+            }else if(document.getElementById('AMV_button').checked){
+              tbdDataTable(jsonObj_AMV);
+            }
+        }
+    document.getElementById('AMP').innerHTML= data_AMP.length;
+    document.getElementById('NO').innerHTML= data_NO.length;
+      </script>
+</body>
+</html>
