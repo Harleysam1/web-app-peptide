@@ -10,22 +10,18 @@
           padding: 0;
           font-family: sans-serif;
         }
+        body {
+           background-color: white;
+        }
         .chartMenu {
           width: 100vw;
-          height: 40px;
-          background: #1A1A1A;
-          color: rgba(54, 162, 235, 1);
+          height: 60px;
+          background: #202020;
+          color: white;
         }
         .chartMenu p {
           padding: 10px;
-          font-size: 20px;
-        }
-        .chartBox {
-          width: 700px;
-          padding: 20px;
-          border-radius: 20px;
-          border: solid 3px rgba(54, 162, 235, 1);
-          background: white;
+          font-size: 28px;
         }
         table, th, td {
           border: 1px solid black;
@@ -37,46 +33,46 @@
 </head>
 <body>
     </form>
-    <div>Output :</div>
     <div class="chartMenu">
         <p>โปรแกรมประยุกต์บนเว็บเพื่อการทำนายคุณสมบัติการต่อต้านจุลชีพของเปปไทด์สายสั้น</p>
       </div>
             <form method="POST">
               <br>
-                <div style="margin-left: 10px;">Input : AAA,BBB </div><br>
-                <div style="margin-left: 10px;"><textarea id="text" name="text" style="width: 750px;height: 350px;"></textarea></div><br>
-                <input type="submit" value="submit" style="margin-left: 10px;"><br><br>
+                <div style="margin-left: 10px;">Input : </div><br>
+                <div style="margin-left: 10px;">EX : AAA,BBB </div><br>
+                <div style="margin-left: 100px;"><textarea id="text" name="text" style="width: 750px;height: 325px;"></textarea></div><br>
+                <input type="submit" value="submit" style="margin-left: 100px;padding-left: 350px;padding-right: 350px;padding-top: 5px;padding-bottom: 5px;background-color: #24a0ed;color: white;"><br><br>
+                <hr style="width:100%;text-align:left;margin-left:0">
+                <br>
                 <div style="margin-left: 10px;">Output :</div><br>
-        <div class="chartBox" style="margin-left: 10px;">
+        <div class="chartBox" style="margin-left: 100px;width: 700px;padding: 20px;border-radius: 20px;border: solid 3px rgba(238, 210, 2, 1);background: white;">
             <div style="text-align: center;">AMP <label id = "AMP"></label></div>
           <canvas id="myChart"></canvas>
         </div>
-        <div class="chartBox" style="margin-left: 10px;">
+        <div class="chartBox" style="margin-left: 100px;width: 700px;padding: 20px;border-radius: 20px;border: solid 3px rgba(238, 210, 2, 1);background: white;">
             <div style="text-align: center;">NO <label id = "NO"></label> </div>
         </div><br>
-              <input type="radio" id="AMP_button" name="button" value="AMP" onclick="uncheck()">
-              <label for="AMP_button">AMP</label><br>
+        <hr style="width:100%;text-align:left;margin-left:0">
+        <br>
+             <input type="radio" id="AMP_button" name="button" value="AMP" onclick="uncheck()" style="margin-left: 100px;">
+              <label for="AMP_button">AMP</label>
               <input type="radio" id="No_button" name="button" value="No" onclick="uncheck()">
-              <label for="No_button">No</label><br>
+              <label for="No_button">No</label>
               <input type="radio" id="other_button" name="button" value="other" onclick="check()">
-              <label for="other_button">AMB/AMF/AMV</label><br>
-              <input type="checkbox" id="AMB_button" name="AMB_button" value="AMB" disabled="disabled" onclick="other()">
-              <label for="AMB_button"> AMB</label><br>
-              <input type="checkbox" id="AMF_button" name="AMF_button" value="AMF" disabled="disabled" onclick="other()">
-              <label for="AMF_button"> AMF</label><br>
-              <input type="checkbox" id="AMV_button" name="AMV_button" value="AMV" disabled="disabled" onclick="other()">
-              <label for="AMV_button"> AMV</label><br><br>
+              <label for="other_button">ABP/AFP/AVP</label><br>
+              <input type="checkbox" id="ABP_button" name="ABP_button" value="ABP" disabled="disabled" onclick="other()" style="margin-left: 235px;">
+              <label for="ABP_button"> ABP</label><br>
+              <input type="checkbox" id="AFP_button" name="AFP_button" value="AFP" disabled="disabled" onclick="other()" style="margin-left: 235px;">
+              <label for="AFP_button"></label> AFP</label><br>
+              <input type="checkbox" id="AVP_button" name="AVP_button" value="AVP" disabled="disabled" onclick="other()" style="margin-left: 235px;">
+              <label for="AVP_button"> AVP</label><br><br>
+            <div class="chartBox" style="margin-left: 100px;width: 1000px;padding: 20px;border-radius: 20px;border: solid 3px rgba(0, 171, 102, 1);background: white;">
              <table id="table">
                 <tr>
-                  <th>No.</th>
-                  <th>Name</th>
-                  <th>AMP</th>
-                  <th>AMB</th>
-                  <th>AMV</th>
-                  <th>AMF</th>
-                  <th>Source</th>
                 </tr>
               </table>
+
+            </div>
     </form>
       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
       <script type="text/javascript" src="https://unpkg.com/chartjs-chart-venn@3.6.0/build/index.umd.min.js"></script>
@@ -146,69 +142,69 @@
 		columns:[
 			{
 				title : "No.",
-				width : "10%",
+				width : "5%",
 				defaultContent : "",
-				class : "lb-txt-center",
+				class : "text-center",
 				render : function(data, type, row, meta) {
 					return data;
 				},
 			},
 			{
 				title : "Name",
-				width : "25%",
+				width : "35%",
 				data : "Name",
 				defaultContent : "",
-				class : "lb-txt-center",
+				class : "text-left",
 				render : function(data, type, row) {
 					return data;
 				},
 			},
 			{
 				title : "AMP",
-				width : "10%",
+				width : "5%",
 				data : "AMP",
 				defaultContent : "0",
-				class : "lb-txt-center",
+				class : "text-center",
 				render : function(data, type, row) {
 					return data;
 				},
 			},
 			{
-				title : "AMB",
-				width : "10%",
-				data : "AMB",
+				title : "ABP",
+				width : "5%",
+				data : "ABP",
 				defaultContent : "0",
-				class : "lb-txt-center",
+				class : "text-center",
 				render : function(data, type, row) {
 					return data;
 				},
 			},
 			{
-				title : "AMF",
-				width : "10%",
-				data : "AMF",
+				title : "AFP",
+				width : "5%",
+				data : "AFP",
 				defaultContent : "0",
-				class : "lb-txt-center",
+				class : "text-center",
 				render : function(data, type, row) {
 					return data;
 				},
 			},
 			{
-				title : "AMV",
-				width : "10%",
-				data : "AMV",
+				title : "AVP",
+				width : "5%",
+				data : "AVP",
 				defaultContent : "0",
-				class : "lb-txt-center",
+				class : "text-center",
 				render : function(data, type, row) {
 					return data;
 				},
 			},
 			{
 				title : "Source",
-				width : "25%",
+				width : "40%",
 				data : "Source",
 				defaultContent : "",
-				class : "lb-txt-center",
+				class : "text-left",
 				render : function(data, type, row) {
 					return data;
 				},
@@ -224,17 +220,17 @@
       </script>
       <script>
         function check(){
-            document.getElementById('AMB_button').disabled = false;
-            document.getElementById('AMF_button').disabled = false;
-            document.getElementById('AMV_button').disabled = false;
+            document.getElementById('ABP_button').disabled = false;
+            document.getElementById('AFP_button').disabled = false;
+            document.getElementById('AVP_button').disabled = false;
     }
         function uncheck(){
-            document.getElementById('AMB_button').disabled = true;
-            document.getElementById('AMF_button').disabled = true;
-            document.getElementById('AMV_button').disabled = true;
-            document.getElementById('AMB_button').checked = false;
-            document.getElementById('AMF_button').checked = false;
-            document.getElementById('AMV_button').checked = false;
+            document.getElementById('ABP_button').disabled = true;
+            document.getElementById('AFP_button').disabled = true;
+            document.getElementById('AVP_button').disabled = true;
+            document.getElementById('ABP_button').checked = false;
+            document.getElementById('AFP_button').checked = false;
+            document.getElementById('AVP_button').checked = false;
             if(document.getElementById('AMP_button').checked){
               tbdDataTable(jsonObj_AMP);
             }else if(document.getElementById('No_button').checked){
@@ -242,24 +238,25 @@
             }
     }
         function other(){
-          if(document.getElementById('AMB_button').checked && document.getElementById('AMF_button').checked && document.getElementById('AMV_button').checked){
-              tbdDataTable(jsonObj_AMB_AMF_AMV);
-            }else if(document.getElementById('AMB_button').checked && document.getElementById('AMF_button').checked){
-              tbdDataTable(jsonObj_AMB_AMF);
-            }else if(document.getElementById('AMF_button').checked && document.getElementById('AMV_button').checked){
-              tbdDataTable(jsonObj_AMF_AMV);
-            }else if(document.getElementById('AMB_button').checked && document.getElementById('AMV_button').checked){
-              tbdDataTable(jsonObj_AMV_AMB);
-            }else if(document.getElementById('AMB_button').checked){
-              tbdDataTable(jsonObj_AMB);
-            }else if(document.getElementById('AMF_button').checked){
-              tbdDataTable(jsonObj_AMF);
-            }else if(document.getElementById('AMV_button').checked){
-              tbdDataTable(jsonObj_AMV);
+          if(document.getElementById('ABP_button').checked && document.getElementById('AFP_button').checked && document.getElementById('AVP_button').checked){
+              tbdDataTable(jsonObj_ABP_AFP_AVP);
+            }else if(document.getElementById('ABP_button').checked && document.getElementById('AFP_button').checked){
+              tbdDataTable(jsonObj_ABP_AFP);
+            }else if(document.getElementById('AFP_button').checked && document.getElementById('AVP_button').checked){
+              tbdDataTable(jsonObj_AFP_AVP);
+            }else if(document.getElementById('ABP_button').checked && document.getElementById('AVP_button').checked){
+              tbdDataTable(jsonObj_AVP_ABP);
+            }else if(document.getElementById('ABP_button').checked){
+              tbdDataTable(jsonObj_ABP);
+            }else if(document.getElementById('AFP_button').checked){
+              tbdDataTable(jsonObj_AFP);
+            }else if(document.getElementById('AVP_button').checked){
+              tbdDataTable(jsonObj_AVP);
             }
         }
     document.getElementById('AMP').innerHTML= data_AMP.length;
     document.getElementById('NO').innerHTML= data_NO.length;
+
       </script>
 </body>
 </html>

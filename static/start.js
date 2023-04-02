@@ -1,20 +1,20 @@
 data_venn = [
     {
-      label: 'AMB',
+      label: 'ABP',
       values: []
   },
   {
-      label: 'AMF',
+      label: 'AFP',
       values: []
   },
   {
-      label: 'AMV',
+      label: 'AVP',
       values: []
   }
   ]
   
   data_AMP = []
-  data_NO = ['E']
+  data_NO = []
   
   var jsonObj_AMP = [
    {}
@@ -24,31 +24,31 @@ data_venn = [
     {}
    ];
   
-   var jsonObj_AMB = [
+   var jsonObj_ABP = [
     {}
    ];
   
-   var jsonObj_AMF = [
+   var jsonObj_AFP = [
     {}
    ];
   
-   var jsonObj_AMV = [
+   var jsonObj_AVP = [
     {}
    ];
   
-   var jsonObj_AMB_AMF = [
+   var jsonObj_ABP_AFP = [
     {}
    ];
   
-   var jsonObj_AMF_AMV = [
+   var jsonObj_AFP_AVP = [
     {}
    ];
   
-   var jsonObj_AMV_AMB = [
+   var jsonObj_AVP_ABP = [
     {}
    ];
   
-   var jsonObj_AMB_AMF_AMV = [
+   var jsonObj_ABP_AFP_AVP = [
     {}
    ];
   

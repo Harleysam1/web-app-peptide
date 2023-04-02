@@ -1,14 +1,14 @@
 data_venn = [
   {
-    label: 'AMB',
+    label: 'ABP',
     values: ['A',"F","G","I"]
 },
 {
-    label: 'AMF',
+    label: 'AFP',
     values: ['B',"F","H","I"]
 },
 {
-    label: 'AMV',
+    label: 'AVP',
     values: ['C',"G","H","I"]
 }
 ]
@@ -24,30 +24,30 @@ var jsonObj_NO = [
   { "Name": "E", "Source": "Source" }
  ];
 
- var jsonObj_AMB = [
-  { "Name": "A","AMP": "1", "AMB": "1" ,"Source": "Source" }
+ var jsonObj_ABP = [
+  { "Name": "A","AMP": "1", "ABP": "1" ,"Source": "Source" }
  ];
 
- var jsonObj_AMF = [
-  { "Name": "B","AMP": "1","AMF": "1" , "Source": "Source" }
+ var jsonObj_AFP = [
+  { "Name": "B","AMP": "1","AFP": "1" , "Source": "Source" }
  ];
 
- var jsonObj_AMV = [
-  { "Name": "C","AMP": "1","AMV": "1" , "Source": "Source" }
+ var jsonObj_AVP = [
+  { "Name": "C","AMP": "1","AVP": "1" , "Source": "Source" }
  ];
 
- var jsonObj_AMB_AMF = [
-  { "Name": "F","AMP": "1","AMB": "1","AMF": "1", "Source": "Source" }
+ var jsonObj_ABP_AFP = [
+  { "Name": "F","AMP": "1","ABP": "1","AFP": "1", "Source": "Source" }
  ];
 
- var jsonObj_AMF_AMV = [
-  { "Name": "G","AMP": "1","AMF": "1","AMV": "1", "Source": "Source" }
+ var jsonObj_AFP_AVP = [
+  { "Name": "G","AMP": "1","AFP": "1","AVP": "1", "Source": "Source" }
  ];
 
- var jsonObj_AMV_AMB = [
-  { "Name": "H","AMP": "1","AMB": "1","AMV": "1","Source": "Source" }
+ var jsonObj_AVP_ABP = [
+  { "Name": "H","AMP": "1","ABP": "1","AVP": "1","Source": "Source" }
  ];
 
- var jsonObj_AMB_AMF_AMV = [
-  { "Name": "I","AMP": "1","AMB": "1","AMF": "1","AMV": "1", "Source": "Source" }
+ var jsonObj_ABP_AFP_AVP = [
+  { "Name": "I","AMP": "1","ABP": "1","AFP": "1","AVP": "1", "Source": "Source" }
  ];
